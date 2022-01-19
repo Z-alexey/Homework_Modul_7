@@ -92,3 +92,67 @@ mixer.handOrStation ()
 
 console.log (washingMachine)
 console.log (mixer)
+
+//-------------Задание №5__________________//
+
+class BasicView {
+  constructor () {
+  this.workingMode = 'От сети';
+  this.voltage = '220 В';
+  this.funcOn = false;
+};
+
+commandOn = function () {
+  this.funcOn === true;
+  console.log('Прибор включен в сеть!');
+};
+
+commandOff = function () {
+  this.funcOn === false;
+  console.log('Прибор отключен от сети!');
+};
+}
+
+class LargeHomeElectronics extends BasicView {
+constructor (model, name, watt, type, powerInput, funcOn, workingMode, voltage) {
+  super(funcOn,workingMode,voltage);
+  this.name  = name;
+  this.model = model;
+  this.type = type;
+  this.power = (`${watt} ватт`);
+  this.powerInput = powerInput;
+};
+
+modeInput = function (powerInput) {
+  let sumPow = this.powerInput * 1.5 / this.powerInput;
+  return  console.log (`Потребляемое количество электроэнергии составляет: ${sumPow} кВ/ч`)
+};
+}
+
+class SmallHomeElectronics extends BasicView {
+constructor (model, name, watt, type, powerInput, funcOn, workingMode, voltage) {
+  super(funcOn,workingMode,voltage);
+  this.name  = name;
+  this.model = model; 
+  this.type = type;
+  this.power = (`${watt} ватт`);
+  this.stationary = true;
+};
+
+handOrStation = function (model) {
+  if (this.stationary === true) {
+    console.log (`Полное описание модели ${this.model} смотрите на сайте. `)
+  }
+};
+}
+  const washingMachine = new LargeHomeElectronics ("MX-444", "indesit", "1000", "крупная техника", 1000, false);
+  const mixer = new SmallHomeElectronics ("LT-235", "braun", "500" ,"мелкая техника", true);
+
+washingMachine.commandOn ()
+washingMachine.commandOff ()
+washingMachine.modeInput ()
+mixer.handOrStation ()
+
+
+console.log (washingMachine)
+console.log (mixer)
